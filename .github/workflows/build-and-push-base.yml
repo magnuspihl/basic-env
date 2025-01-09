@@ -11,6 +11,6 @@ on:
 
 jobs:
   build:
-    uses: uwu/basic-env/.github/workflows/_build-and-push.yml@main
+    uses: MagnusPihl/basic-env/.github/workflows/_build-and-push.yml@main
     with:
       image: base
