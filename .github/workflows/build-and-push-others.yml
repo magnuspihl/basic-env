@@ -10,9 +10,9 @@ on:
 
 jobs:
   build:
-    uses: uwu/basic-env/.github/workflows/_build-and-push.yml@main
+    uses: MagnusPihl/basic-env/.github/workflows/_build-and-push.yml@main
     strategy:
       matrix:
-        image: [dart, java, javascript]
+        image: [dotnet]
     with:
       image: ${{ matrix.image }}
