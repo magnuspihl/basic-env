@@ -24,7 +24,7 @@ COPY ./common/install /tmp/common/install
 # Install common
 RUN bash devcontainer_init
 #RUN bash common_install_packages docker shellcheck cosign os-agent
-RUN bash usermod -aG docker vscode
+#RUN bash usermod -aG docker vscode
 
 COPY ./addons/rootfs /
 
