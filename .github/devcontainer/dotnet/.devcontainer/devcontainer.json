@@ -1,0 +1,13 @@
+{
+  "name": "MagnusPihl/basic-env - JavaScript",
+  "image": "ghcr.io/MagnusPihl/basic-env/base:latest",
+
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "lts",
+      "installYarnUsingApt": false
+    }
+  },
+  
+  "remoteUser": "coder"
+}
