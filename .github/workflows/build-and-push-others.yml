@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    uses: MagnusPihl/basic-env/.github/workflows/_build-and-push.yml@main
+    uses: magnuspihl/basic-env/.github/workflows/_build-and-push.yml@main
     strategy:
       matrix:
         image: [dotnet]
