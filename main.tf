@@ -119,6 +119,11 @@ data "coder_parameter" "docker_image" {
   }
 
   option {
+    name = "C# .NET Core"
+    value = "dotnet"
+  }
+
+  option {
     name  = "Base"
     value = "base"
   }
@@ -348,6 +353,45 @@ resource "docker_image" "java" {
   pull_triggers = [data.docker_registry_image.java[0].sha256_digest]
 }
 
+data "docker_registry_image" "dotnet" {
+  count = data.coder_parameter.docker_image.value == "dotnet" ? 1 : 0
+
+  name = "ghcr.io/magnuspihl/basic-env/dotnet:latest"
+}
+
+resource "docker_image" "dotnet" {
+  count = data.coder_parameter.docker_image.value == "dotnet" ? 1 : 0
+
+  name          = data.docker_registry_image.dotnet[0].name
+  pull_triggers = [data.docker_registry_image.dotnet[0].sha256_digest]
+}
+
+data "docker_registry_image" "python" {
+  count = data.coder_parameter.docker_image.value == "python" ? 1 : 0
+
+  name = "ghcr.io/magnuspihl/basic-env/python:latest"
+}
+
+resource "docker_image" "python" {
+  count = data.coder_parameter.docker_image.value == "python" ? 1 : 0
+
+  name          = data.docker_registry_image.python[0].name
+  pull_triggers = [data.docker_registry_image.python[0].sha256_digest]
+}
+
+data "docker_registry_image" "homeassistant" {
+  count = data.coder_parameter.docker_image.value == "homeassistant" ? 1 : 0
+
+  name = "ghcr.io/magnuspihl/basic-env/homeassistant:latest"
+}
+
+resource "docker_image" "homeassistant" {
+  count = data.coder_parameter.docker_image.value == "homeassistant" ? 1 : 0
+
+  name          = data.docker_registry_image.homeassistant[0].name
+  pull_triggers = [data.docker_registry_image.homeassistant[0].sha256_digest]
+}
+
 resource "coder_metadata" "javascript_image" {
   count = data.coder_parameter.docker_image.value == "javascript" ? 1 : 0
 
@@ -387,6 +431,45 @@ resource "coder_metadata" "java_image" {
   }
 }
 
+resource "coder_metadata" "dotnet_image" {
+  count = data.coder_parameter.docker_image.value == "dotnet" ? 1 : 0
+
+  resource_id = docker_image.dotnet[0].id
+
+  hide = true
+
+  item {
+    key   = "description"
+    value = "C# .NET Core container image"
+  }
+}
+
+resource "coder_metadata" "python_image" {
+  count = data.coder_parameter.docker_image.value == "python" ? 1 : 0
+
+  resource_id = docker_image.python[0].id
+
+  hide = true
+
+  item {
+    key   = "description"
+    value = "Python container image"
+  }
+}
+
+resource "coder_metadata" "homeassistant_image" {
+  count = data.coder_parameter.docker_image.value == "homeassistant" ? 1 : 0
+
+  resource_id = docker_image.homeassistant[0].id
+
+  hide = true
+
+  item {
+    key   = "description"
+    value = "Home Assistant container image"
+  }
+}
+
 resource "docker_container" "workspace" {
   count = data.coder_workspace.me.start_count
 
@@ -395,7 +478,7 @@ resource "docker_container" "workspace" {
   image = local.images[data.coder_parameter.docker_image.value][0].image_id
 
   # set runtime to use Sysbox to allow Docker in Docker
-  runtime = "sysbox-runc"
+  # runtime = "sysbox-runc"
 
   name     = "coder-${local.user_name}-${local.workspace_name}"
   hostname = local.workspace_name
