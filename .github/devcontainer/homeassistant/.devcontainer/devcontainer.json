@@ -1,0 +1,13 @@
+{
+  "name": "uwu/basic-env - Home Assistant",
+  "image": "ghcr.io/uwu/basic-env/base:latest",
+
+  "features": {
+    "ghcr.io/home-assistant/devcontainer:addons": {
+      "version": "lts",
+      "installYarnUsingApt": false
+    }
+  },
+  
+  "remoteUser": "coder"
+}
