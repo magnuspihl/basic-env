@@ -1,6 +1,6 @@
 {
   "name": "magnuspihl/basic-env - JavaScript",
-  "image": "ghcr.io/MagnusPihl/basic-env/base:latest",
+  "image": "ghcr.io/magnuspihl/basic-env/base:latest",
 
   "features": {
     "ghcr.io/devcontainers/features/dotnet:2": {
