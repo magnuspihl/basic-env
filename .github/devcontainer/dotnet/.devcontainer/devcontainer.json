@@ -1,5 +1,5 @@
 {
-  "name": "magnuspihl/basic-env - JavaScript",
+  "name": "magnuspihl/basic-env - DotNet",
   "image": "ghcr.io/uwu/basic-env/base:latest",
 
   "features": {
