@@ -1,5 +1,5 @@
 {
-  "name": "MagnusPihl/basic-env - JavaScript",
+  "name": "magnuspihl/basic-env - JavaScript",
   "image": "ghcr.io/MagnusPihl/basic-env/base:latest",
 
   "features": {
