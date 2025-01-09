@@ -1,0 +1,13 @@
+{
+  "name": "uwu/basic-env - Python",
+  "image": "ghcr.io/uwu/basic-env/base:latest",
+
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "lts",
+      "installYarnUsingApt": false
+    }
+  },
+  
+  "remoteUser": "coder"
+}
