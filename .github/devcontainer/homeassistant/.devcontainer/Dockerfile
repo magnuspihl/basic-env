@@ -22,12 +22,12 @@ COPY ./common/rootfs_supervisor /
 COPY ./common/install /tmp/common/install
 
 # Install common
-RUN bash devcontainer_init
+RUN devcontainer_init
 # Is chmod really needed if we're root? It's missing eXecution permissions, but is that really an issue?
 #RUN bash chmod 777 /usr/bin/get_arch
-RUN bash common_install_packages docker || true
-RUN bash common_install_packages docker shellcheck cosign os-agent || true
-RUN bash usermod -aG docker coder
+RUN common_install_packages docker || true
+RUN common_install_packages docker shellcheck cosign os-agent || true
+RUN usermod -aG docker coder
 
 COPY ./addons/rootfs /
 
