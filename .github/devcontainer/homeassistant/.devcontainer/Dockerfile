@@ -6,7 +6,8 @@ ENV \
     DEBIAN_FRONTEND=noninteractive \
     DEVCONTAINER=1
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+SHELL ["/bin/bash", "-l", "-c"]
 
 # Install tools
 RUN \
