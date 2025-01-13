@@ -1,13 +1,12 @@
 FROM ghcr.io/uwu/basic-env/base:latest
 
-#USER root
+USER root
 
 ENV \
     DEBIAN_FRONTEND=noninteractive \
     DEVCONTAINER=1
 
-#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-SHELL ["/bin/bash", "-l", "-c"]
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install tools
 RUN \
@@ -28,9 +27,9 @@ RUN devcontainer_init
 #RUN bash chmod 777 /usr/bin/get_arch
 RUN common_install_packages docker || true
 RUN common_install_packages docker shellcheck cosign os-agent || true
-RUN usermod -aG docker coder
+#RUN usermod -aG docker coder
 
 COPY ./addons/rootfs /
 
-USER coder
+#USER coder
 ENV DEBIAN_FRONTEND="dialog"
