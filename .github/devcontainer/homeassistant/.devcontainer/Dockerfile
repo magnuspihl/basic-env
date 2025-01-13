@@ -1,6 +1,6 @@
 FROM ghcr.io/uwu/basic-env/base:latest
 
-USER root
+#USER root
 
 ENV \
     DEBIAN_FRONTEND=noninteractive \
