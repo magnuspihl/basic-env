@@ -13,6 +13,6 @@ jobs:
     uses: magnuspihl/basic-env/.github/workflows/_build-and-push.yml@main
     strategy:
       matrix:
-        image: [dotnet,python,homeassistant]
+        image: [dotnet,python]
     with:
       image: ${{ matrix.image }}
